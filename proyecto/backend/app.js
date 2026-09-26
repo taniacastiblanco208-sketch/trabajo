@@ -47,6 +47,7 @@ app.use((err, req, res, next) => {
 // Definir el puerto asignado por Railway o usar el 3000 por defecto
 const PORT = process.env.PORT || 3000;
 
+
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Servidor backend corriendo en http://0.0.0.0:${PORT}`);
+  console.log(`Servidor backend corriendo en el puerto ${PORT}`);
 });
