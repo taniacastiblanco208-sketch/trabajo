@@ -1,13 +1,21 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(cors());
+// 1. Habilitar CORS explícitamente (DEBE IR ANTES DE CUALQUIER RUTA)
+app.use(cors({
+  origin: '*', // Permite peticiones desde cualquier origen (incluyendo Vercel)
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
+
+// 2. Definición de rutas (clientes, productos, ventas, etc.)
+// app.use('/clientes', clientesRouter);
+// app.use('/productos', productosRouter);
+// app.use('/ventas', ventasRouter);
 app.use(express.urlencoded({ extended: false }));
 
 // Rutas
