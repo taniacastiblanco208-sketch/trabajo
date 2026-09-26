@@ -3,19 +3,19 @@ const cors = require('cors');
 
 const app = express();
 
-// 1. Habilitar CORS explícitamente (DEBE IR ANTES DE CUALQUIER RUTA)
+// 1. CORS debe ir en la parte superior con origen permitido
 app.use(cors({
-  origin: '*', // Permite peticiones desde cualquier origen (incluyendo Vercel)
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
 
-// 2. Definición de rutas (clientes, productos, ventas, etc.)
-// app.use('/clientes', clientesRouter);
-// app.use('/productos', productosRouter);
-// app.use('/ventas', ventasRouter);
+// 2. Revisa si tus rutas están con /api o directas
+// SI EN TU CÓDIGO TIENES:
+// app.use('/api/clientes', clientesRoutes);
+// ASEGÚRATE DE QUE COINCIDA CON LO QUE PIDE EL FRONTEND.
 app.use(express.urlencoded({ extended: false }));
 
 // Rutas
